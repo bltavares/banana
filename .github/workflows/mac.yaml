@@ -9,9 +9,9 @@ jobs:
       matrix:
         system: [x86_64, aarch64]
     steps:
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - uses: DeterminateSystems/nix-installer-action@main
         with:
           extra-conf: "extra-platforms = ${{ matrix.system }}-darwin"
       - uses: DeterminateSystems/magic-nix-cache-action@main
-      - run: nix flake check --system ${{ matrix.system }}-darwin
+      - run: nix flake check --system ${{ matrix.system }}-darwin --accept-flake-config
