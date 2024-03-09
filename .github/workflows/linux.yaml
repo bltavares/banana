@@ -2,6 +2,11 @@ name: Linux
 on:
   push:
   pull_request:
+
+env:
+  # https://github.com/NixOS/nix/issues/8608
+  LD_LIBRARY_PATH: ""
+
 jobs:
   check:
     runs-on: ubuntu-latest
