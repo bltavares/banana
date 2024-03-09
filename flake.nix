@@ -2,7 +2,6 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-unstable";
     flake-parts.url = "github:hercules-ci/flake-parts";
-    systems.url = "github:nix-systems/default";
 
     # Self
     ## Flake Hygiene
@@ -33,7 +32,13 @@
     ...
   }:
     flake-parts.lib.mkFlake {inherit inputs;} {
-      systems = import inputs.systems;
+      systems = [
+        "aarch64-darwin"
+        "aarch64-linux"
+        "x86_64-darwin"
+        "x86_64-linux"
+        "armv7l-linux"
+      ];
       imports = [
         inputs.treefmt-nix.flakeModule
 
