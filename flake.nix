@@ -33,7 +33,6 @@
     ...
   }:
     flake-parts.lib.mkFlake {inherit inputs;} {
-      debug = true;
       systems = import inputs.systems;
       imports = [
         inputs.treefmt-nix.flakeModule
