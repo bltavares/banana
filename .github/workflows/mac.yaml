@@ -10,10 +10,8 @@ jobs:
         system: [x86_64, aarch64]
     steps:
       - uses: actions/checkout@v3
-      - name: Setup QEMU User and binfmt
-        uses: docker/setup-qemu-action@v3
       - uses: DeterminateSystems/nix-installer-action@main
         with:
-          extra-conf: "extra-platforms = ${{ matrix.system }}-linux"
+          extra-conf: "extra-platforms = ${{ matrix.system }}-darwin"
       - uses: DeterminateSystems/magic-nix-cache-action@main
-      - run: nix flake check --system ${{ matrix.system }}-linux
+      - run: nix flake check --system ${{ matrix.system }}-darwin

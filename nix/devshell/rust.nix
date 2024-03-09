@@ -11,6 +11,7 @@
       nativeBuildInputs = [
         config.project.toolchain-packages
         pkgs.rust-analyzer
+        pkgs.cargo-nextest
       ];
     };
   };
