@@ -9,9 +9,9 @@ jobs:
     strategy:
       matrix:
         system: 
-        #  - x86_64
+         - x86_64
          - aarch64
-         - armv7l
+        #  - armv7l
     steps:
       - uses: actions/checkout@v4
       - name: Setup QEMU User and binfmt

@@ -37,7 +37,7 @@
         "aarch64-linux"
         "x86_64-darwin"
         "x86_64-linux"
-        "armv7l-linux"
+        # "armv7l-linux" # TODO figure out how to make this work as many derivations don't support it
       ];
       imports = [
         inputs.treefmt-nix.flakeModule
