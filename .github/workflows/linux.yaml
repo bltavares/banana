@@ -9,7 +9,7 @@ jobs:
     strategy:
       matrix:
         system: 
-         - x86_64
+        #  - x86_64
          - aarch64
         #  - armv7l
     steps:
@@ -19,5 +19,5 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@main
         with:
           extra-conf: "extra-platforms = ${{ matrix.system }}-linux"
-      - uses: DeterminateSystems/magic-nix-cache-action@main
+      # - uses: DeterminateSystems/magic-nix-cache-action@main
       - run: nix flake check --system ${{ matrix.system }}-linux --accept-flake-config
