@@ -80,7 +80,7 @@ jobs:
         uses: actions-rs/cargo@v1
         with:
           command: install
-          args: nextest
+          args: cargo-nextest
       - name: Run cargo nextest
         uses: actions-rs/cargo@v1
         with:
