@@ -16,6 +16,9 @@
       buildInputs = lib.optionals pkgs.stdenv.isDarwin [
         pkgs.libiconv
       ];
+
+      # https://github.com/ipetkov/crane/issues/385
+      doNotLinkInheritedArtifacts = true;
     };
 
     cargoArtifacts = craneLib.buildDepsOnly commonArgs;
