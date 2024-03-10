@@ -43,7 +43,7 @@
       # Run tests with cargo-nextest
       # Consider setting `doCheck = false` on `my-crate` if you do not want
       # the tests to run twice
-      my-crate-nextest = craneLib.cargoTest (commonArgs
+      my-crate-nextest = craneLib.cargoNextest (commonArgs
         // {
           inherit cargoArtifacts;
         });
