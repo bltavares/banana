@@ -31,6 +31,7 @@
   in {
     checks = {
       inherit project;
+
       project-clippy = craneLib.cargoClippy (commonArgs
         // {
           inherit cargoArtifacts;
@@ -45,7 +46,10 @@
       # Run tests with cargo-nextest
       # Consider setting `doCheck = false` on `my-crate` if you do not want
       # the tests to run twice
-      my-crate-nextest = craneLib.cargoNextest commonArgs;
+      my-crate-nextest = craneLib.cargoTest (commonArgs
+        // {
+          inherit cargoArtifacts;
+        });
     };
 
     packages = {
