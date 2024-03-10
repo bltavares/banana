@@ -45,7 +45,7 @@
       # the tests to run twice
       my-crate-nextest = craneLib.cargoNextest (commonArgs
         // {
-          inherit cargoArtifacts;
+          inherit project;
         });
     };
 
