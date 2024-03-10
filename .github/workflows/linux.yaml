@@ -20,5 +20,4 @@ jobs:
         with:
           extra-conf: "extra-platforms = ${{ matrix.system }}-linux"
       - uses: DeterminateSystems/magic-nix-cache-action@main
-      - run: env
-      - run: nix flake check --system ${{ matrix.system }}-linux --accept-flake-config
+      - run: nix flake check --system ${{ matrix.system }}-linux --accept-flake-config -L
