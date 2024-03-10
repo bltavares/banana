@@ -20,7 +20,7 @@
 
     options.project.craneLib = lib.mkOption {
       type = lib.types.lazyAttrsOf lib.types.raw;
-      default = (inputs.crane.mkLib pkgs);
+      default = inputs.crane.mkLib pkgs;
     };
 
     options.project.toolchain-packages = lib.mkOption {

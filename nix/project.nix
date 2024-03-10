@@ -47,7 +47,6 @@
           inherit cargoArtifacts;
           partitions = 1;
           partitionType = "count";
-
         });
     };
 
