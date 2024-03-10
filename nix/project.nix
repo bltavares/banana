@@ -43,7 +43,11 @@
       # TODO Run tests with cargo-nextest
       my-crate-nextest = craneLib.cargoNextest (commonArgs
         // {
-          cargoArtifacts = null;
+          inherit cargoArtifacts;
+
+          nativeBuildInputs = [
+            config.project.toolchain-packages
+          ];
         });
     };
 
