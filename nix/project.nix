@@ -40,12 +40,16 @@
           inherit cargoArtifacts;
         });
 
-      # Run tests with cargo-nextest
-      # Consider setting `doCheck = false` on `my-crate` if you do not want
-      # the tests to run twice
+      # TODO Run tests with cargo-nextest
       my-crate-nextest = craneLib.cargoNextest (commonArgs
         // {
-          inherit project;
+          inherit cargoArtifacts;
+
+          # Work around Nextest bug: https://github.com/nextest-rs/nextest/issues/267
+          # happens on emulated system compilation
+          preCheck = ''
+            export DYLD_FALLBACK_LIBRARY_PATH=$(${config.project.toolchain-packages}/bin/rustc --print sysroot)/lib
+          '';
         });
     };
 
