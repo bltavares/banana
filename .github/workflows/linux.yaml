@@ -19,5 +19,6 @@ jobs:
       - uses: DeterminateSystems/nix-installer-action@main
         with:
           extra-conf: "extra-platforms = ${{ matrix.system }}-linux"
-      # - uses: DeterminateSystems/magic-nix-cache-action@main
-      - run: nix flake check --system ${{ matrix.system }}-linux --accept-flake-config --repair
+      - uses: DeterminateSystems/magic-nix-cache-action@main
+      # Isolate the environment with "nix shell -i" to avoid LD_LIBRARY_PATH issues
+      - run: nix shell -i nixpkgs#bash --comand bash -l -c "nix flake check --system ${{ matrix.system }}-linux --accept-flake-config"
