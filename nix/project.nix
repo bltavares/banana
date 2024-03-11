@@ -47,10 +47,18 @@
       #  --- stdout:
       #  Error while loading __double-spawn: No such file or directory
       #
-      project-test = craneLib.cargoTest (commonArgs
-        // {
-          inherit cargoArtifacts;
-        });
+      project-test =
+        if pkgs.stdenv.isDarwin
+        then
+          craneLib.cargoNexTest (commonArgs
+            // {
+              inherit cargoArtifacts;
+            })
+        else
+          craneLib.cargoTest (commonArgs
+            // {
+              inherit cargoArtifacts;
+            });
     };
 
     packages = {
