@@ -40,14 +40,16 @@
           inherit cargoArtifacts;
         });
 
-      # TODO Run tests with cargo-nextest
-      my-crate-nextest = craneLib.cargoNextest (commonArgs
+      # TODO Run tests with craneLib.cargoNextest when I can figure out qemu-static emulated compilation fixes
+      # Last error: `nix flake check --system ${cross-arch}-linux`
+      # Caused by:
+      #  for `project`, command `/tmp/nix-build-project-deps-0.1.0.drv-0/source/target/debug/deps/project-8c8aea5626901f1b --list --format terse` exited with code 1
+      #  --- stdout:
+      #  Error while loading __double-spawn: No such file or directory
+      #
+      project-test = craneLib.cargoTest (commonArgs
         // {
           inherit cargoArtifacts;
-
-          nativeBuildInputs = [
-            config.project.toolchain-packages
-          ];
         });
     };
 
