@@ -50,7 +50,7 @@
       project-test =
         if pkgs.stdenv.isDarwin
         then
-          craneLib.cargoNexTest (commonArgs
+          craneLib.cargoNextest (commonArgs
             // {
               inherit cargoArtifacts;
             })
